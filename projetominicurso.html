@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Projeto</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main>
+        <form onsubmit="handleSubmit(event)">
+            <h1>Formulário</h1>
+
+            <label for ="name">NOME</label>
+            <input type="text" name="NOME" id = name>
+
+            <label for ="cpf">CPF</label>
+            <input type="text" name="CPF" id = cpf>
+
+            <label for ="email">E-MAIL</label>
+            <input type="email" id = email>
+
+            <label for ="password">SENHA</label>
+            <input type="password" id = password>
+
+            <button type = "submit">ENVIAR</button>
+
+
+        </form>
+    <main>    
+</body>
+<script>
+    function handleSubmit(event){
+        event.preventDefault()
+        const name = document.getElementById('name').value
+        const cpf = document.getElementById('cpf').value
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+        const data ={
+            name,cpf,email,password
+        }
+        fetch("http://10.230.158.48:3333/form",{
+            method:"POST",
+        //"PUT(ALTERA),GET(PEGA ALGO JA EXISTENTE),POST(CADASTRA),DELETE"
+        body:JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+        }
+        )
+    }
+    //const button = document.querySelector('button')
+    //button.addEventListener('click',function(){
+        //alert('ENVIADO')
+    //})
+</script>
+</html>
